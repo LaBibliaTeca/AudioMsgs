@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head> 
-  <meta CHANNEL="UTF-8">
-   <meta name="viewport" content=width=device-width,initial-scale=1.0"> 
-        <title>Angeleología de Mónica Basso</title>
-  </head>
-  <body> 
-  <h2>Reproductor MP3</h2>
-    <h3>Angeleología <br> Ensayo de Mónica Basso</h3>
-    <!---Reproductor de Mp3 -->
-<p><i>"demora 5 segundos"</i></p>
-<a href="https://drive.google.com/file/d/1bTRZaNhBfUETgngwbZmreSwKuHUBolEn/view" target="_blank">Audio</a>
-  
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproducción automática de audio</title>
+</head>
+<body onload="playAudio()">
+  <!-- Reemplaza FILE_ID con el ID de tu archivo de Google Drive -->
+  <audio id="myAudio" src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn"></audio>
+
+  <script>
+    function playAudio() {
+      var audio = document.getElementById("myAudio");
+      audio.play().catch(function(error) {
+        console.log("La reproducción automática ha sido bloqueada por el navegador", error);
+      });
+    }
+  </script>
+</body>
 </html>
