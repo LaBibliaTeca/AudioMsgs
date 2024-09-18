@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angeleología</title>
+  <title>Reproducción de audio con verificación</title>
 </head>
 <body>
-  <h3>Angeleologia , Ensayo de Mónica Basso</h3>
-  <audio id="myAudio" controls src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn"></audio><br>
+  <!-- Reemplaza FILE_ID con el ID correcto del archivo de Google Drive -->
+  <audio id="myAudio" controls src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
 
-  <!-- Botones personalizados -->
-  <button onclick="retroceder10()">Retroceder 10 segundos</button><br>
-  <button onclick="adelantar10()">Adelantar 10 segundos</button><br>
+  <!-- Div para mostrar mensajes -->
+  <div id="status"></div>
 
   <script>
-    function retroceder10() {
-      var audio = document.getElementById("myAudio");
-      audio.currentTime -= 10; // Retroceder 10 segundos
-    }
+    var audio = document.getElementById("myAudio");
+    var statusDiv = document.getElementById("status");
 
-    function adelantar10() {
-      var audio = document.getElementById("myAudio");
-      audio.currentTime += 10; // Adelantar 10 segundos
-    }
+    // Verifica si el audio ha sido cargado
+    audio.onloadeddata = function() {
+      statusDiv.innerHTML = "El archivo de audio se ha cargado correctamente.";
+      console.log("El archivo de audio se ha cargado correctamente.");
+    };
+
+    // Manejo de errores en la carga del archivo
+    audio.onerror = function() {
+      statusDiv.innerHTML = "Error: no se pudo cargar el archivo de audio.";
+      console.log("Error: no se pudo cargar el archivo de audio.");
+    };
 
     // Reproducción automática cuando se carga la página
     window.onload = function() {
-      var audio = document.getElementById("myAudio");
       audio.play().catch(function(error) {
         console.log("La reproducción automática ha sido bloqueada por el navegador", error);
       });
