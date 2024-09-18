@@ -3,15 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reproducción de audio con controles</title>
+  <title>Angeleología</title>
 </head>
 <body>
-  <!-- Reemplaza FILE_ID con el ID de tu archivo de Google Drive -->
-  <audio id="myAudio" controls src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn">
-    Tu navegador no soporta el elemento de audio.
-  </audio>
+  <h3>Aneleologia , Ensayo de Mónica Basso</h3>
+  <audio id="myAudio" controls src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn&ezport"></audio>
+
+  <!-- Botones personalizados -->
+  <button onclick="retroceder10()">Retroceder 10 segundos</button>
+  <button onclick="adelantar10()">Adelantar 10 segundos</button>
 
   <script>
+    function retroceder10() {
+      var audio = document.getElementById("myAudio");
+      audio.currentTime -= 10; // Retroceder 10 segundos
+    }
+
+    function adelantar10() {
+      var audio = document.getElementById("myAudio");
+      audio.currentTime += 10; // Adelantar 10 segundos
+    }
+
     // Reproducción automática cuando se carga la página
     window.onload = function() {
       var audio = document.getElementById("myAudio");
