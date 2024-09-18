@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reproducción automática de audio</title>
+  <title>Reproducción de audio con controles</title>
 </head>
-<body onload="playAudio()">
+<body>
   <!-- Reemplaza FILE_ID con el ID de tu archivo de Google Drive -->
-  <audio id="myAudio" src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn"></audio>
-  <button onclick="playAudio()">Reproducir audio</button>
+  <audio id="myAudio" controls src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
 
   <script>
-    function playAudio() {
+    // Reproducción automática cuando se carga la página
+    window.onload = function() {
       var audio = document.getElementById("myAudio");
       audio.play().catch(function(error) {
         console.log("La reproducción automática ha sido bloqueada por el navegador", error);
       });
-    }
+    };
   </script>
 </body>
 </html>
-
