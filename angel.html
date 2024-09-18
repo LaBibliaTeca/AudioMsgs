@@ -3,43 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reproducción de audio con verificación</title>
+  <title>Reproducción automática de audio</title>
 </head>
-<body>
-
-    <h3>Angeleología - Ensayo Mónica Basso</h3>
-<br>
-  <!-- Reemplaza FILE_ID con el ID correcto del archivo de Google Drive -->
-  <audio id="myAudio" controls src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn"></audio>
-
-   <!-- Tu navegador no soporta el elemento de audio.-->
-
-  <!-- Div para mostrar mensajes -->
-  <div id="status"></div>
-
+<body onload="playAudio()">
+  <!-- Reemplaza FILE_ID con el ID de tu archivo de Google Drive -->
+  <audio id="myAudio" src="https://drive.google.com/uc?export=download&id=1bTRZaNhBfUETgngwbZmreSwKuHUBolEn"></audio>
 
   <script>
-    var audio = document.getElementById("myAudio");
-    var statusDiv = document.getElementById("status");
-
-    // Verifica si el audio ha sido cargado
-    audio.onloadeddata = function() {
-      statusDiv.innerHTML = "El archivo de audio se ha cargado correctamente.";
-      console.log("El archivo de audio se ha cargado correctamente.");
-    };
-
-    // Manejo de errores en la carga del archivo
-    audio.onerror = function() {
-      statusDiv.innerHTML = "Error: no se pudo cargar el archivo de audio.";
-      console.log("Error: no se pudo cargar el archivo de audio.");
-    };
-
-    // Reproducción automática cuando se carga la página
-    window.onload = function() {
+    function playAudio() {
+      var audio = document.getElementById("myAudio");
       audio.play().catch(function(error) {
         console.log("La reproducción automática ha sido bloqueada por el navegador", error);
       });
-    };
+    }
   </script>
 </body>
 </html>
+
